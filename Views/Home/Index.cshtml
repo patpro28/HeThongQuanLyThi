@@ -1,7 +1,444 @@
-@{
-    ViewData["Title"] = "Trang chủ";
-}
-<h1 class="mb-3">Trang chủ</h1>
+<main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+
+      <div class="container">
+        <div class="row gy-4">
+          <div style="display: flex; flex-direction: column; justify-content: center;" class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+            <h1>HỆ THỐNG QUẢN LÝ</h1>
+            <h1a>THI TRẮC NGHIỆM TRỰC TUYẾN</h1a>
+            <p>Thước đo của sự nỗ lực không phải là giới hạn của tri thức.</p>
+            <div class="d-flex">
+              <a class="btn-get-started nav-link" asp-area="" asp-controller="Account" asp-action="Register">Đăng ký</a>
+              <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox btn-watch-video d-flex align-items-center"></a>
+            </div>
+          </div>
+          <div class="col-lg-6 order-1 order-lg-2 hero-img">
+            <img src="assets/img/hero-img.png" class="img-fluid animated" alt="">
+          </div>
+        </div>
+      </div>
+
+    </section><!-- /Hero Section -->
+
+    <!-- Clients Section -->
+    <section id="clients" class="clients section light-background">
+
+      <div class="container" data-aos="fade-up">
+
+        <div class="row gy-4">
+
+          <div class="col-xl-2 col-md-3 col-6 client-logo">
+            <img src="assets/img/clients/client-1.png" class="img-fluid" alt="">
+          </div><!-- End Client Item -->
+
+          <div class="col-xl-2 col-md-3 col-6 client-logo">
+            <img src="assets/img/clients/client-2.png" class="img-fluid" alt="">
+          </div><!-- End Client Item -->
+
+          <div class="col-xl-2 col-md-3 col-6 client-logo">
+            <img src="assets/img/clients/client-3.png" class="img-fluid" alt="">
+          </div><!-- End Client Item -->
+
+          <div class="col-xl-2 col-md-3 col-6 client-logo">
+            <img src="assets/img/clients/client-4.png" class="img-fluid" alt="">
+          </div><!-- End Client Item -->
+
+          <div class="col-xl-2 col-md-3 col-6 client-logo">
+            <img src="assets/img/clients/client-5.png" class="img-fluid" alt="">
+          </div><!-- End Client Item -->
+
+          <div class="col-xl-2 col-md-3 col-6 client-logo">
+            <img src="assets/img/clients/client-6.png" class="img-fluid" alt="">
+          </div><!-- End Client Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Clients Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Giới thiệu</h2>
+        <p>Nền tảng thi trắc nghiệm thế hệ mới</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-5">
+
+          <div class="content col-xl-5 d-flex flex-column" data-aos="fade-up" data-aos-delay="100">
+            <h3>Công nghệ đổi mới - Giáo dục thông minh</h3>
+            <p>
+              Trở thành nền tảng trắc nghiệm trực tuyến đáng tin cậy nhất, đồng hành cùng học sinh, giáo viên và nhà trường trong kỷ nguyên số.
+            </p>
+            <a href="#" class="about-btn align-self-center align-self-xl-start"><span>Khám phá ngay</span> <i class="bi bi-chevron-right"></i></a>
+          </div>
+
+          <div class="col-xl-7" data-aos="fade-up" data-aos-delay="200">
+            <div class="row gy-4">
+
+              <div class="col-md-6 icon-box position-relative">
+                <i class="bi bi-briefcase"></i>
+                <h4><a href="" class="stretched-link">Tùy biến linh hoạt</a></h4>
+                <p>Tạo đề nhanh, tùy chọn thời gian, số câu hỏi, và hiển thị kết quả theo ý bạn.</p>
+              </div><!-- Icon-Box -->
+
+              <div class="col-md-6 icon-box position-relative">
+                <i class="bi bi-gem"></i>
+                <h4><a href="" class="stretched-link">Trải nghiệm thông minh</a></h4>
+                <p>Giao diện hiện đại, dễ thao tác, hỗ trợ tốt trên cả điện thoại và máy tính.</p>
+              </div><!-- Icon-Box -->
+
+              <div class="col-md-6 icon-box position-relative">
+                <i class="bi bi-broadcast"></i>
+                <h4><a href="" class="stretched-link">Thống kê và lưu kết quả</a></h4>
+                <p>Quản lý và theo dõi kết quả thi của học sinh một cách dễ dàng.</p>
+              </div><!-- Icon-Box -->
+
+              <div class="col-md-6 icon-box position-relative">
+                <i class="bi bi-easel"></i>
+                <h4><a href="" class="stretched-link">Kết nối cộng đồng học tập</a></h4>
+                <p>Tham gia vào cộng đồng học tập trực tuyến, chia sẻ kiến thức và kinh nghiệm.</p>
+              </div><!-- Icon-Box -->
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /About Section -->
+
+    <!-- Stats Section -->
+    <section id="stats" class="stats section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4 align-items-center">
+
+          <div class="col-lg-5">
+            <img src="assets/img/stats-img.svg" alt="" class="img-fluid">
+          </div>
+
+          <div class="col-lg-7">
+
+            <div class="row gy-4">
+
+              <div class="col-lg-6">
+                <div class="stats-item d-flex">
+                  <i class="bi bi-emoji-smile flex-shrink-0"></i>
+                  <div>
+                    <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+                    <p><strong>Thí sinh</strong> <span>tham gia</span></p>
+                  </div>
+                </div>
+              </div><!-- End Stats Item -->
+
+              <div class="col-lg-6">
+                <div class="stats-item d-flex">
+                  <i class="bi bi-journal-richtext flex-shrink-0"></i>
+                  <div>
+                    <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+                    <p><strong>Đề thi </strong> <span>đã được tạo</span></p>
+                  </div>
+                </div>
+              </div><!-- End Stats Item -->
+
+              <div class="col-lg-6">
+                <div class="stats-item d-flex">
+                  <i class="bi bi-headset flex-shrink-0"></i>
+                  <div>
+                    <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
+                    <p><strong>Bài thi </strong> <span>đã nộp</span></p>
+                  </div>
+                </div>
+              </div><!-- End Stats Item -->
+
+              <div class="col-lg-6">
+                <div class="stats-item d-flex">
+                  <i class="bi bi-people flex-shrink-0"></i>
+                  <div>
+                    <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
+                    <p><strong>Người dùng</strong> <span>hài lòng</span></p>
+                  </div>
+                </div>
+              </div><!-- End Stats Item -->
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Stats Section -->
+
+    <!-- Services Section -->
+    <section id="services" class="services section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Kho học liệu</h2>
+        <p>Kho học liệu số - Mở cánh cửa tri thức</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item position-relative">
+              <i class="bi bi-activity"></i>
+              <h4><a href="" class="stretched-link">Tạo đề thi dễ dàng</a></h4>
+              <p>Hỗ trợ nhiều dạng trực tuyến chỉ trong vài phút</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <i class="bi bi-bounding-box-circles"></i>
+              <h4><a href="" class="stretched-link">Làm bài mọi lúc mọi nơi</a></h4>
+              <p>Học tập linh hoạt trên mọi thiết bị</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item position-relative">
+              <i class="bi bi-calendar4-week"></i>
+              <h4><a href="" class="stretched-link">Tự động chấm và thống kê kết quả</a></h4>
+              <p>Hệ thống tự động chấm điểm, hiển thị kết quả ngay sau khi nộp bài</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item position-relative">
+              <i class="bi bi-broadcast"></i>
+              <h4><a href="" class="stretched-link">Bảng xếp hạng</a></h4>
+              <p>Tăng tính cạnh tranh và khích lệ học tập</p>
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Services Section -->
+
+    <!-- Alt Services Section -->
+    <section id="alt-services" class="alt-services section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <div class="img">
+                <img src="assets/img/services-1.jpg" class="img-fluid" alt="">
+              </div>
+              <div class="details">
+                <a href="service-details.html" class="stretched-link">
+                  <h3>Giáo viên</h3>
+                </a>
+                <p>tạo bài kiểm tra 15 phút hoặc 1 tiết, luyện đề thi</p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="300">
+            <div class="service-item position-relative">
+              <div class="img">
+                <img src="assets/img/services-2.jpg" class="img-fluid" alt="">
+              </div>
+              <div class="details">
+                <a href="service-details.html" class="stretched-link">
+                  <h3>Học sinh</h3>
+                </a>
+                <p>Luyện tập theo chương trình, thi thử, xem thống kế tiến bộ của mình.</p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="400">
+            <div class="service-item position-relative">
+              <div class="img">
+                <img src="assets/img/services-3.jpg" class="img-fluid" alt="">
+              </div>
+              <div class="details">
+                <a href="service-details.html" class="stretched-link">
+                  <h3>Nhà trường</h3>
+                </a>
+                <p>Tổ chức kỳ thi online, giảm chi phí in ấn, tự động tổng hợp điểm.</p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="500">
+            <div class="service-item position-relative">
+              <div class="img">
+                <img src="assets/img/services-4.jpg" class="img-fluid" alt="">
+              </div>
+              <div class="details">
+                <a href="service-details.html" class="stretched-link">
+                  <h3>Cộng đồng học tập</h3>
+                </a>
+                <p>Hỗ trợ học tập, chia sẻ tài liệu, và kết nối giữa các học sinh.</p>
+                <a href="service-details.html" class="stretched-link"></a>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Alt Services Section -->
+
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Testimonials</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="swiper init-swiper">
+          <script type="application/json" class="swiper-config">
+            {
+              "loop": true,
+              "speed": 600,
+              "autoplay": {
+                "delay": 5000
+              },
+              "slidesPerView": "auto",
+              "pagination": {
+                "el": ".swiper-pagination",
+                "type": "bullets",
+                "clickable": true
+              },
+              "breakpoints": {
+                "320": {
+                  "slidesPerView": 1,
+                  "spaceBetween": 40
+                },
+                "1200": {
+                  "slidesPerView": 2,
+                  "spaceBetween": 20
+                }
+              }
+            }
+          </script>
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                  <h3>Saul Goodman</h3>
+                  <h4>Ceo &amp; Founder</h4>
+                  <div class="stars">
+                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  </div>
+                  <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.</span>
+                    <i class="bi bi-quote quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                  <h3>Sara Wilsson</h3>
+                  <h4>Designer</h4>
+                  <div class="stars">
+                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  </div>
+                  <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.</span>
+                    <i class="bi bi-quote quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+                  <h3>Jena Karlis</h3>
+                  <h4>Store Owner</h4>
+                  <div class="stars">
+                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  </div>
+                  <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    <span>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.</span>
+                    <i class="bi bi-quote quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+                  <h3>Matt Brandon</h3>
+                  <h4>Freelancer</h4>
+                  <div class="stars">
+                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  </div>
+                  <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.</span>
+                    <i class="bi bi-quote quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+                  <h3>John Larson</h3>
+                  <h4>Entrepreneur</h4>
+                  <div class="stars">
+                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  </div>
+                  <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    <span>Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.</span>
+                    <i class="bi bi-quote quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+
+    </section><!-- /Testimonials Section -->
 
 @if (User?.Identity?.IsAuthenticated == true)
 {
@@ -20,3 +457,4 @@ else
         <a asp-controller="Account" asp-action="Register" class="btn btn-success">Đăng ký</a>
     </div>
 }
+</main>
