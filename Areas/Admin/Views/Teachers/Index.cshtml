@@ -1,0 +1,31 @@
+@model IEnumerable<TeacherPromoteVm>
+@{
+    ViewData["Title"] = "Quản lý giáo viên";
+}
+<h1>Quản lý giáo viên</h1>
+
+@if (TempData["ok"] is string ok) { <div class="alert alert-success">@ok</div> }
+
+<form class="mb-3" method="get">
+  <input name="q" class="form-control" placeholder="Tìm theo tên..." value="@Context.Request.Query["q"]" />
+</form>
+
+<table class="table table-sm align-middle">
+  <thead><tr><th>Tên</th><th>Nhánh</th><th style="width:220px"></th></tr></thead>
+  <tbody>
+  @foreach (var x in Model)
+  {
+    <tr>
+      <td>@x.FullName <small class="text-muted">(@x.UserId)</small></td>
+      <td>@(x.HasTeacher ? "Teacher" : x.HasStudent ? "Student" : "None")</td>
+      <td class="text-end">
+        <a asp-area="Admin" asp-controller="Teachers" asp-action="Promote" asp-route-userId="@x.UserId" class="btn btn-sm btn-primary">Set Teacher</a>
+        <form asp-area="Admin" asp-controller="Teachers" asp-action="Demote" asp-route-userId="@x.UserId" method="post" class="d-inline">
+          @Html.AntiForgeryToken()
+          <button class="btn btn-sm btn-outline-secondary" type="submit">Set Student</button>
+        </form>
+      </td>
+    </tr>
+  }
+  </tbody>
+</table>

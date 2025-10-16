@@ -1,0 +1,65 @@
+@model StudentProfileEditVm
+@{
+    ViewData["Title"] = "Trang cá nhân";
+}
+<h1>Trang cá nhân</h1>
+
+@if (TempData["ok"] is string okMsg)
+{
+    <div class="alert alert-success">@okMsg</div>
+}
+
+<form asp-action="Edit" method="post">
+    @Html.AntiForgeryToken()
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <h5>Thông tin chung</h5>
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label asp-for="FullName" class="form-label"></label>
+            <input asp-for="FullName" class="form-control" />
+            <span asp-validation-for="FullName" class="text-danger"></span>
+        </div>
+        <div class="col-md-3">
+            <label asp-for="DateOfBirth" class="form-label"></label>
+            <input asp-for="DateOfBirth" type="date" class="form-control" />
+        </div>
+        <div class="col-md-3">
+            <label asp-for="Gender" class="form-label"></label>
+            <input asp-for="Gender" class="form-control" />
+        </div>
+        <div class="col-md-8">
+            <label asp-for="Address" class="form-label"></label>
+            <input asp-for="Address" class="form-control" />
+        </div>
+        <div class="col-md-4">
+            <label asp-for="Phone" class="form-label"></label>
+            <input asp-for="Phone" class="form-control" />
+        </div>
+    </div>
+
+    <hr class="my-4" />
+    <h5>Thông tin học sinh</h5>
+    <div class="row g-3">
+        <div class="col-md-4">
+            <label asp-for="GradeLevel" class="form-label"></label>
+            <input asp-for="GradeLevel" class="form-control" />
+        </div>
+        <div class="col-md-4">
+            <label asp-for="ClassName" class="form-label"></label>
+            <input asp-for="ClassName" class="form-control" />
+        </div>
+        <div class="col-md-4">
+            <label asp-for="EnrollmentYear" class="form-label"></label>
+            <input asp-for="EnrollmentYear" class="form-control" />
+        </div>
+        <div class="col-md-4">
+            <label asp-for="ParentPhone" class="form-label"></label>
+            <input asp-for="ParentPhone" class="form-control" />
+        </div>
+    </div>
+
+    <button class="btn btn-primary mt-4">Lưu</button>
+</form>
+
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

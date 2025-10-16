@@ -1,0 +1,30 @@
+@model PromoteTeacherVm
+@{
+    ViewData["Title"] = "Thiết lập giáo viên";
+}
+<h1>Thiết lập giáo viên</h1>
+
+<form asp-area="Admin" asp-controller="Teachers" asp-action="Promote" method="post">
+  @Html.AntiForgeryToken()
+  <input type="hidden" asp-for="UserId" />
+
+  <div class="mb-2">
+    <label>Họ tên</label>
+    <input class="form-control" value="@Model.FullName" disabled />
+  </div>
+  <div class="mb-2">
+    <label asp-for="Subject" class="form-label"></label>
+    <input asp-for="Subject" class="form-control" />
+  </div>
+  <div class="mb-2">
+    <label asp-for="Degree" class="form-label"></label>
+    <input asp-for="Degree" class="form-control" />
+  </div>
+  <div class="mb-2">
+    <label asp-for="HomeroomClass" class="form-label"></label>
+    <input asp-for="HomeroomClass" class="form-control" />
+  </div>
+
+  <button class="btn btn-primary">Lưu</button>
+  <a asp-area="Admin" asp-controller="Teachers" asp-action="Index" class="btn btn-link">Quay lại</a>
+</form>
