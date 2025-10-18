@@ -1,35 +1,51 @@
 @model HeThongQuanLyThi.Models.RegisterViewModel
 @{
-    ViewData["Title"] = "Đăng ký";
+    ViewData[index: "Title"] = "Đăng ký";
 }
-<h1 class="mb-3">Đăng ký</h1>
+<div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+    <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
+        <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+            <h2 class="text-xl font-bold leading-tight tracking-tight text-gray-900">Tạo tài khoản</h2>
 
-<form asp-action="Register" method="post" class="form">
-    @Html.AntiForgeryToken()
-    <input type="hidden" asp-for="ReturnUrl" />
+            <form class="space-y-4 md:space-y-6" asp-action="Register" method="post">
+                @Html.AntiForgeryToken()
+                <input type="hidden" asp-for="ReturnUrl" />
 
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div asp-validation-summary="ModelOnly" class="text-red-500 text-sm"></div>
+                <div>
+                    <label asp-for="Email" class="block mb-2 text-sm font-medium text-gray-900"></label>
+                    <input asp-for="Email"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
+                        placeholder="name@company.com" required="">
+                    <span asp-validation-for="Email" class="text-red-500 text-sm"></span>
+                </div>
+                <div>
+                    <label asp-for="Password"
+                        class="block mb-2 text-sm font-medium text-gray-900"></label>
+                    <input asp-for="Password" placeholder="••••••••"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
+                        required="">
+                    <span asp-validation-for="Password" class="text-red-500 text-sm"></span>
+                </div>
+                <div>
+                    <label asp-for="ConfirmPassword"
+                        class="block mb-2 text-sm font-medium text-gray-900"></label>
+                    <input asp-for="ConfirmPassword" placeholder="••••••••"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
+                        required="">
+                    <span asp-validation-for="ConfirmPassword" class="text-red-500 text-sm"></span>
+                </div>
+                <button type="submit"
+                    class="w-full mt-6 text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Đăng ký</button>
+                <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+                    Đã có tài khoản? <a asp-controller="Account" asp-action="Login"
+                        class="font-medium text-blue-600 hover:underline dark:text-blue-500">Đăng nhập</a>
+                </p>
+            </form>
 
-    <div class="mb-3">
-        <label asp-for="Email" class="form-label"></label>
-        <input asp-for="Email" class="form-control" autocomplete="username" />
-        <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
     </div>
-
-    <div class="mb-3">
-        <label asp-for="Password" class="form-label"></label>
-        <input asp-for="Password" class="form-control" type="password" autocomplete="new-password" />
-        <span asp-validation-for="Password" class="text-danger"></span>
-    </div>
-
-    <div class="mb-3">
-        <label asp-for="ConfirmPassword" class="form-label"></label>
-        <input asp-for="ConfirmPassword" class="form-control" type="password" autocomplete="new-password" />
-        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-    </div>
-
-    <button type="submit" class="btn btn-success w-100">Tạo tài khoản</button>
-</form>
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

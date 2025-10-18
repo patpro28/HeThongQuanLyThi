@@ -1,0 +1,39 @@
+@model HeThongQuanLyThi.Models.AdminUserCreateVm
+@{
+    ViewData[index: "Title"] = "Tạo người dùng";
+}
+<h1 class="text-2xl font-semibold mb-4">Tạo người dùng</h1>
+
+<form asp-action="Create" method="post" class="max-w-xl">
+  @Html.AntiForgeryToken()
+  <div asp-validation-summary="ModelOnly" class="text-red-600 mb-3"></div>
+
+  <label class="block text-sm">Email</label>
+  <input asp-for="Email" class="mt-1 mb-3 w-full rounded border p-2" />
+  <span asp-validation-for="Email" class="text-red-600 text-sm"></span>
+
+  <label class="block text-sm">Mật khẩu</label>
+  <input asp-for="Password" type="password" class="mt-1 mb-3 w-full rounded border p-2" />
+  <span asp-validation-for="Password" class="text-red-600 text-sm"></span>
+
+  <label class="block text-sm">Nhập lại mật khẩu</label>
+  <input asp-for="ConfirmPassword" type="password" class="mt-1 mb-3 w-full rounded border p-2" />
+  <span asp-validation-for="ConfirmPassword" class="text-red-600 text-sm"></span>
+
+  <label class="block text-sm">Họ tên (tuỳ chọn)</label>
+  <input asp-for="FullName" class="mt-1 mb-3 w-full rounded border p-2" />
+
+  <label class="block text-sm">Role</label>
+  <select asp-for="Role" class="mt-1 mb-4 w-full rounded border p-2">
+    <option value="student">student</option>
+    <option value="teacher">teacher</option>
+    <option value="admin">admin</option>
+  </select>
+
+  <div class="flex gap-2">
+    <button class="rounded bg-indigo-600 px-4 py-2 text-white">Tạo</button>
+    <a asp-action="Index" class="rounded border px-4 py-2 hover:bg-gray-50">Hủy</a>
+  </div>
+</form>
+
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

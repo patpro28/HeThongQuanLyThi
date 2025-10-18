@@ -1,0 +1,16 @@
+@model HeThongQuanLyThi.Models.Subject
+@{
+    ViewData["Title"] = "Xoá môn học";
+}
+<h1 class="text-2xl font-semibold mb-4">Xoá môn học</h1>
+
+<div class="bg-white rounded border p-4 mb-4">
+    <p>Bạn có chắc muốn xoá môn: <strong>@Model.Name (@Model.Code)</strong>?</p>
+</div>
+
+<form asp-action="Delete" method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="Id" />
+    <button class="rounded bg-red-600 px-4 py-2 text-white">Xoá</button>
+    <a asp-action="Index" class="ml-2 rounded border px-4 py-2 hover:bg-gray-50">Hủy</a>
+</form>

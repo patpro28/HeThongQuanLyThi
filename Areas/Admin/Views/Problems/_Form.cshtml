@@ -1,0 +1,55 @@
+@model HeThongQuanLyThi.Models.ProblemEditVm
+@{
+    var subjects = (IEnumerable<HeThongQuanLyThi.Models.Subject>)ViewBag.Subjects;
+}
+<div asp-validation-summary="ModelOnly" class="text-red-600 mb-3"></div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="md:col-span-2">
+        <label asp-for="Content" class="block text-sm">Câu hỏi</label>
+        <textarea asp-for="Content" rows="3" class="mt-1 w-full rounded border p-2"></textarea>
+        <span asp-validation-for="Content" class="text-red-600 text-sm"></span>
+    </div>
+    <div>
+        <label asp-for="SubjectId" class="block text-sm">Môn học</label>
+        <select asp-for="SubjectId" class="mt-1 w-full rounded border p-2">
+            <option value="">-- Không chọn --</option>
+            @foreach (var s in subjects)
+            {
+                <option value="@s.Id">@s.Name</option>
+            }
+        </select>
+    </div>
+    <div class="md:col-span-2">
+        <label asp-for="Explanation" class="block text-sm">Giải thích chung (tuỳ chọn)</label>
+        <textarea asp-for="Explanation" rows="2" class="mt-1 w-full rounded border p-2"></textarea>
+    </div>
+</div>
+
+<hr class="my-4" />
+
+<h3 class="text-lg font-medium mb-2">Đáp án</h3>
+
+@for (int i = 0; i < Model.Choices.Count; i++)
+{
+    <div class="rounded border p-3 mb-3 bg-white">
+        <div class="flex items-center justify-between">
+            <div class="font-medium">Đáp án @(i + 1)</div>
+            <label class="inline-flex items-center gap-2">
+                <input asp-for="Choices[i].IsCorrect" type="checkbox" class="rounded" />
+                <span>Đáp án đúng</span>
+            </label>
+        </div>
+        <input type="hidden" asp-for="Choices[i].Id" />
+        <input type="hidden" asp-for="Choices[i].Order" />
+        <div class="mt-2">
+            <label asp-for="Choices[i].Text" class="block text-sm">Nội dung</label>
+            <textarea asp-for="Choices[i].Text" rows="2" class="mt-1 w-full rounded border p-2"></textarea>
+            <span asp-validation-for="Choices[i].Text" class="text-red-600 text-sm"></span>
+        </div>
+        <div class="mt-2">
+            <label asp-for="Choices[i].Explanation" class="block text-sm">Giải thích (tuỳ chọn)</label>
+            <textarea asp-for="Choices[i].Explanation" rows="2" class="mt-1 w-full rounded border p-2"></textarea>
+        </div>
+    </div>
+}

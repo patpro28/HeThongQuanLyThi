@@ -1,0 +1,24 @@
+
+
+@model HeThongQuanLyThi.Models.Contest
+@{
+    ViewData["Title"] = "Xoá cuộc thi";
+}
+<h1 class="text-2xl font-semibold mb-4">Xoá cuộc thi</h1>
+
+<div class="bg-white rounded border p-4 mb-4">
+  <p>Bạn có chắc muốn xoá cuộc thi: <strong>@Model.Title</strong>?</p>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-2 text-sm text-gray-700">
+    <div><span class="text-gray-500">Môn:</span> @Model.Subject?.Name</div>
+    <div><span class="text-gray-500">Thời gian:</span> @Model.StartAt.ToLocalTime() — @Model.EndAt?.ToLocalTime()</div>
+    <div><span class="text-gray-500">Trạng thái:</span> @(Model.IsPublished ? "Đã phát hành" : "Nháp")</div>
+    <div><span class="text-gray-500">Giới hạn/phút:</span> @Model.TimeLimitMinutes</div>
+  </div>
+</div>
+
+<form asp-action="Delete" method="post">
+  @Html.AntiForgeryToken()
+  <input type="hidden" asp-for="Id" />
+  <button class="rounded bg-red-600 px-4 py-2 text-white">Xoá</button>
+  <a asp-action="Index" class="ml-2 rounded border px-4 py-2 hover:bg-gray-50">Hủy</a>
+</form>

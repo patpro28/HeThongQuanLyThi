@@ -1,0 +1,52 @@
+@model HeThongQuanLyThi.Models.AdminUserEditVm
+@{
+    ViewData[index: "Title"] = "Sửa người dùng";
+    IEnumerable<string>? allRoles = (IEnumerable<string>)ViewBag.AllRoles;
+}
+<h1 class="text-2xl font-semibold mb-4">Sửa người dùng</h1>
+
+<form asp-action="Edit" method="post" class="max-w-xl">
+  @Html.AntiForgeryToken()
+  <input type="hidden" asp-for="Id" />
+  <div asp-validation-summary="ModelOnly" class="text-red-600 mb-3"></div>
+
+  <label class="block text-sm">Email</label>
+  <input asp-for="Email" class="mt-1 mb-3 w-full rounded border p-2" />
+  <span asp-validation-for="Email" class="text-red-600 text-sm"></span>
+
+  <label class="block text-sm">Username</label>
+  <input asp-for="UserName" class="mt-1 mb-3 w-full rounded border p-2" />
+  <span asp-validation-for="UserName" class="text-red-600 text-sm"></span>
+
+  <label class="block text-sm">Họ tên (Profile)</label>
+  <input asp-for="FullName" class="mt-1 mb-3 w-full rounded border p-2" />
+
+  <label class="block text-sm">Số điện thoại</label>
+  <input asp-for="PhoneNumber" class="mt-1 mb-3 w-full rounded border p-2" />
+
+  <label class="block text-sm">Role</label>
+  <select asp-for="Role" class="mt-1 mb-3 w-full rounded border p-2">
+    @foreach (string r in allRoles)
+    {
+      <option value="@r" selected="@(Model.Role==r ? "selected" : null)">@r</option>
+    }
+  </select>
+
+  <div class="grid grid-cols-2 gap-4 mb-4">
+    <div>
+      <label class="block text-sm">Lockout enabled</label>
+      <input asp-for="LockoutEnabled" type="checkbox" class="mt-1" />
+    </div>
+    <div>
+      <label class="block text-sm">Lockout end (UTC)</label>
+      <input asp-for="LockoutEnd" type="datetime-local" class="mt-1 w-full rounded border p-2" />
+    </div>
+  </div>
+
+  <div class="flex gap-2">
+    <button class="rounded bg-indigo-600 px-4 py-2 text-white">Lưu</button>
+    <a asp-action="Index" class="rounded border px-4 py-2 hover:bg-gray-50">Hủy</a>
+  </div>
+</form>
+
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

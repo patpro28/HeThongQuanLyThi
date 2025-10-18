@@ -1,0 +1,20 @@
+@model Microsoft.AspNetCore.Identity.IdentityUser
+@{
+    ViewData["Title"] = "Xoá người dùng";
+}
+<h1 class="text-2xl font-semibold mb-4">Xoá người dùng</h1>
+
+<div class="rounded border p-4 bg-white mb-4">
+  <p>Bạn chắc chắn muốn xoá người dùng sau?</p>
+  <ul class="list-disc pl-6">
+    <li>Email: <strong>@Model.Email</strong></li>
+    <li>Username: <strong>@Model.UserName</strong></li>
+  </ul>
+</div>
+
+<form asp-action="Delete" method="post">
+  @Html.AntiForgeryToken()
+  <input type="hidden" name="id" value="@Model.Id" />
+  <button class="rounded bg-red-600 px-4 py-2 text-white">Xoá</button>
+  <a asp-action="Index" class="ml-2 rounded border px-4 py-2 hover:bg-gray-50">Hủy</a>
+</form>

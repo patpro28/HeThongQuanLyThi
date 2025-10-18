@@ -71,4 +71,19 @@ public class StudentProfileController(AppDbContext db, UserManager<IdentityUser>
         TempData["ok"] = "Đã lưu thay đổi.";
         return RedirectToAction(nameof(Edit));
     }
+
+    // GET: /student/profile/view
+    [HttpGet("view")]
+    public async Task<IActionResult> Details()
+    {
+        var user = await _users.GetUserAsync(User);
+        var p = await _db.Profiles
+            .Include(x => x.Student)
+            .FirstOrDefaultAsync(x => x.UserId == user!.Id);
+
+        if (p == null) return NotFound("Profile chưa được khởi tạo.");
+
+        // Trả về view Details với model là Profile (bao gồm StudentInfo)
+        return View("Details", p);
+    }
 }

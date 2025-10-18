@@ -1,0 +1,59 @@
+@model IEnumerable<HeThongQuanLyThi.Models.Contest>
+@{
+    ViewData["Title"] = "Cuộc thi";
+    var subjects = (IEnumerable<HeThongQuanLyThi.Models.Subject>)ViewBag.Subjects;
+}
+<h1 class="text-2xl font-semibold mb-4">Cuộc thi</h1>
+
+@if (TempData["ok"] is string ok)
+{
+    <div class="mb-3 rounded border border-green-200 bg-green-50 p-3 text-green-800">@ok</div>
+}
+
+<form method="get" class="mb-4 flex flex-wrap gap-2 items-center">
+    <input name="q" value="@((string?)ViewBag.Query)" placeholder="Từ khoá tiêu đề/mô tả..."
+        class="w-80 rounded border border-gray-300 p-2" />
+    <select name="subjectId" class="rounded border p-2">
+        <option value="">-- Môn học --</option>
+        @foreach (var s in subjects)
+        {
+            <option value="@s.Id"
+                selected="@(ViewBag.SubjectId != null && (int)ViewBag.SubjectId == s.Id ? "selected" : null)">@s.Name
+            </option>
+        }
+    </select>
+    <button class="rounded bg-indigo-600 px-4 py-2 text-white">Lọc</button>
+    <a asp-action="Create" class="ml-auto rounded border px-4 py-2 hover:bg-gray-50">Tạo cuộc thi</a>
+</form>
+
+<div class="overflow-x-auto">
+    <table class="min-w-full border border-gray-200 bg-white">
+        <thead class="bg-gray-50">
+            <tr>
+                <th class="p-2 text-left">Tiêu đề</th>
+                <th class="p-2 text-left">Môn</th>
+                <th class="p-2 text-left">Bắt đầu</th>
+                <th class="p-2 text-left">Kết thúc</th>
+                <th class="p-2 text-left">Trạng thái</th>
+                <th class="p-2"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var c in Model)
+            {
+                <tr class="border-t">
+                    <td class="p-2">@c.Title</td>
+                    <td class="p-2">@c.Subject?.Name</td>
+                    <td class="p-2">@c.StartAt.ToLocalTime()</td>
+                    <td class="p-2">@c.EndAt?.ToLocalTime()</td>
+                    <td class="p-2">@(c.IsPublished ? "Đã phát hành" : "Nháp")</td>
+                    <td class="p-2 text-right">
+                        <a asp-action="Details" asp-route-id="@c.Id" class="text-indigo-600 hover:underline mr-2">Xem</a>
+                        <a asp-action="Edit" asp-route-id="@c.Id" class="text-amber-600 hover:underline mr-2">Sửa</a>
+                        <a asp-action="Delete" asp-route-id="@c.Id" class="text-red-600 hover:underline">Xoá</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

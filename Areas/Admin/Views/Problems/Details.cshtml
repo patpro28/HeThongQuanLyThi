@@ -1,0 +1,47 @@
+@model HeThongQuanLyThi.Models.Problem
+@{
+    ViewData["Title"] = "Chi tiết bài tập";
+}
+<h1 class="text-2xl font-semibold mb-4">Chi tiết bài tập</h1>
+
+<div class="bg-white rounded border p-4 mb-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div><span class="text-gray-500">Môn:</span> @Model.Subject?.Name</div>
+    </div>
+    <div class="mt-3">
+        <div class="text-gray-500">Câu hỏi</div>
+        <div>@Model.Content</div>
+    </div>
+    @if (!string.IsNullOrWhiteSpace(Model.Explanation))
+    {
+        <div class="mt-3">
+            <div class="text-gray-500">Giải thích chung</div>
+            <div>@Model.Explanation</div>
+        </div>
+    }
+</div>
+
+<div class="bg-white rounded border p-4">
+    <h3 class="text-lg font-medium mb-2">Đáp án</h3>
+    <ol class="list-decimal pl-6 space-y-2">
+        @foreach (var c in Model.Choices.OrderBy(x => x.Order))
+        {
+            <li>
+                <div>
+                    <span class="font-medium @(c.IsCorrect ? "text-green-700" : "")">
+                        @c.Text @(c.IsCorrect ? "(đúng)" : "")
+                    </span>
+                    @if (!string.IsNullOrWhiteSpace(c.Explanation))
+                    {
+                        <div class="text-sm text-gray-600">Giải thích: @c.Explanation</div>
+                    }
+                </div>
+            </li>
+        }
+    </ol>
+</div>
+
+<div class="mt-4 flex gap-2">
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="rounded border px-4 py-2 hover:bg-gray-50">Sửa</a>
+    <a asp-action="Index" class="rounded border px-4 py-2 hover:bg-gray-50">Quay lại</a>
+</div>

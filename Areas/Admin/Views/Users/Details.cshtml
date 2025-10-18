@@ -1,0 +1,39 @@
+@model (Microsoft.AspNetCore.Identity.IdentityUser user, HeThongQuanLyThi.Models.Profile? profile)
+@{
+    ViewData[index: "Title"] = "Chi tiết người dùng";
+    IList<string>? roles = (IList<string>)ViewBag.Roles;
+}
+<h1 class="text-2xl font-semibold mb-4">Chi tiết người dùng</h1>
+
+<div class="rounded border p-4 bg-white mb-4">
+  <h2 class="text-lg font-medium mb-2">Tài khoản</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+    <div><span class="text-gray-500">Email:</span> @Model.user.Email</div>
+    <div><span class="text-gray-500">Username:</span> @Model.user.UserName</div>
+    <div><span class="text-gray-500">Phone:</span> @Model.user.PhoneNumber</div>
+    <div><span class="text-gray-500">Roles:</span> @string.Join(", ", roles)</div>
+  </div>
+</div>
+
+<div class="rounded border p-4 bg-white">
+  <h2 class="text-lg font-medium mb-2">Hồ sơ</h2>
+  @if (Model.profile is null)
+  {
+      <p class="text-gray-500">Chưa có profile.</p>
+  }
+  else
+  {
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div><span class="text-gray-500">Họ tên:</span> @Model.profile.FullName</div>
+        <div><span class="text-gray-500">Ngày sinh:</span> @Model.profile.DateOfBirth?.ToString("dd/MM/yyyy")</div>
+        <div><span class="text-gray-500">Giới tính:</span> @Model.profile.Gender</div>
+        <div><span class="text-gray-500">SĐT:</span> @Model.profile.Phone</div>
+        <div class="md:col-span-2"><span class="text-gray-500">Địa chỉ:</span> @Model.profile.Address</div>
+      </div>
+  }
+</div>
+
+<div class="mt-4 flex gap-2">
+  <a asp-action="Edit" asp-route-id="@Model.user.Id" class="rounded border px-4 py-2 hover:bg-gray-50">Sửa</a>
+  <a asp-action="Index" class="rounded border px-4 py-2 hover:bg-gray-50">Quay lại</a>
+</div>

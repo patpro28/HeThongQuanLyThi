@@ -1,0 +1,117 @@
+@model HeThongQuanLyThi.Models.ContestEditVm
+@{
+    var subjects = (IEnumerable<HeThongQuanLyThi.Models.Subject>)ViewBag.Subjects;
+}
+<div asp-validation-summary="ModelOnly" class="text-red-600 mb-3"></div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <div class="md:col-span-2">
+    <label asp-for="Title" class="block text-sm">Tiêu đề</label>
+    <input asp-for="Title" class="mt-1 w-full rounded border p-2" />
+    <span asp-validation-for="Title" class="text-red-600 text-sm"></span>
+  </div>
+
+  <div class="md:col-span-2">
+    <label asp-for="Description" class="block text-sm">Mô tả</label>
+    <textarea asp-for="Description" rows="2" class="mt-1 w-full rounded border p-2"></textarea>
+  </div>
+
+  <div class="md:col-span-2 flex items-end gap-2">
+    <div class="flex-1">
+      <label asp-for="SubjectId" class="block text-sm">Môn học</label>
+      <select asp-for="SubjectId" class="mt-1 w-full rounded border p-2">
+        @foreach (var s in subjects)
+        {
+          <option value="@s.Id">@s.Name</option>
+        }
+      </select>
+      <span asp-validation-for="SubjectId" class="text-red-600 text-sm"></span>
+    </div>
+    <!-- Nút reload danh sách câu hỏi theo môn -->
+    <button name="reload" value="1" class="rounded border px-3 py-2 hover:bg-gray-50">
+      Tải DS câu hỏi
+    </button>
+  </div>
+
+  <div>
+    <label asp-for="TimeLimitMinutes" class="block text-sm">Giới hạn thời gian (phút, 0 = không)</label>
+    <input asp-for="TimeLimitMinutes" type="number" class="mt-1 w-full rounded border p-2" />
+  </div>
+
+  <div>
+    <label asp-for="MaxAttemptsPerStudent" class="block text-sm">Lượt làm tối đa / học sinh (0 = không)</label>
+    <input asp-for="MaxAttemptsPerStudent" type="number" class="mt-1 w-full rounded border p-2" />
+  </div>
+
+  <div>
+    <label asp-for="StartAt" class="block text-sm">Bắt đầu</label>
+    <input asp-for="StartAt" type="datetime-local" class="mt-1 w-full rounded border p-2" />
+  </div>
+
+  <div>
+    <label asp-for="EndAt" class="block text-sm">Kết thúc</label>
+    <input asp-for="EndAt" type="datetime-local" class="mt-1 w-full rounded border p-2" />
+  </div>
+
+  <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-4">
+    <label class="inline-flex items-center gap-2">
+      <input asp-for="IsPublished" type="checkbox" class="rounded" />
+      <span>Phát hành</span>
+    </label>
+    <label class="inline-flex items-center gap-2">
+      <input asp-for="ShuffleQuestions" type="checkbox" class="rounded" />
+      <span>Xáo thứ tự câu hỏi</span>
+    </label>
+    <label class="inline-flex items-center gap-2">
+      <input asp-for="ShuffleChoices" type="checkbox" class="rounded" />
+      <span>Xáo thứ tự đáp án</span>
+    </label>
+  </div>
+</div>
+
+<hr class="my-4" />
+
+<h3 class="text-lg font-medium mb-2">Câu hỏi thuộc cuộc thi</h3>
+
+@if (Model.Items == null || Model.Items.Count == 0)
+{
+  <div class="rounded border bg-yellow-50 text-yellow-800 p-3 mb-3">
+    Chưa có câu hỏi nào cho môn đã chọn. Bấm <strong>Tải DS câu hỏi</strong> sau khi chọn môn,
+    hoặc tạo thêm Problem.
+  </div>
+}
+else
+{
+  <div class="overflow-x-auto bg-white rounded border">
+    <table class="min-w-full">
+      <thead class="bg-gray-50">
+        <tr>
+          <th class="p-2 text-left">Chọn</th>
+          <th class="p-2 text-left">Câu hỏi</th>
+          <th class="p-2 text-left">Thứ tự</th>
+          <th class="p-2 text-left">Điểm (override)</th>
+        </tr>
+      </thead>
+      <tbody>
+      @for (int i = 0; i < Model.Items.Count; i++)
+      {
+        <tr class="border-t align-top">
+          <td class="p-2">
+            <input type="hidden" asp-for="Items[i].ProblemId" />
+            <input asp-for="Items[i].Selected" type="checkbox" class="rounded" />
+          </td>
+          <td class="p-2">
+            <div class="text-sm">@Model.Items[i].Content</div>
+          </td>
+          <td class="p-2">
+            <input asp-for="Items[i].Order" type="number" class="w-24 rounded border p-1" />
+          </td>
+          <td class="p-2">
+            <input asp-for="Items[i].PointsOverride" type="number" step="0.1" class="w-28 rounded border p-1" />
+          </td>
+        </tr>
+      }
+      </tbody>
+    </table>
+  </div>
+}

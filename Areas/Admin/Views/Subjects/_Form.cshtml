@@ -1,0 +1,37 @@
+@model HeThongQuanLyThi.Models.Subject
+<div asp-validation-summary="ModelOnly" class="text-red-600 mb-3"></div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <div>
+    <label asp-for="Code" class="block text-sm">Mã môn</label>
+    <input asp-for="Code" class="mt-1 w-full rounded border p-2" />
+    <span asp-validation-for="Code" class="text-red-600 text-sm"></span>
+  </div>
+  <div>
+    <label asp-for="Name" class="block text-sm">Tên môn</label>
+    <input asp-for="Name" class="mt-1 w-full rounded border p-2" />
+    <span asp-validation-for="Name" class="text-red-600 text-sm"></span>
+  </div>
+  <div>
+    <label asp-for="GradeLevel" class="block text-sm">Khối (vd: 10/11/12)</label>
+    <input asp-for="GradeLevel" class="mt-1 w-full rounded border p-2" />
+    <span asp-validation-for="GradeLevel" class="text-red-600 text-sm"></span>
+  </div>
+  <div>
+    <label asp-for="Credits" class="block text-sm">Tín chỉ</label>
+    <input asp-for="Credits" type="number" class="mt-1 w-full rounded border p-2" />
+    <span asp-validation-for="Credits" class="text-red-600 text-sm"></span>
+  </div>
+  <div class="md:col-span-2">
+    <label asp-for="Description" class="block text-sm">Mô tả</label>
+    <textarea asp-for="Description" rows="3" class="mt-1 w-full rounded border p-2"></textarea>
+    <span asp-validation-for="Description" class="text-red-600 text-sm"></span>
+  </div>
+  <div>
+    <label class="block text-sm">Trạng thái</label>
+    <div class="mt-1 flex items-center gap-2">
+      <input asp-for="IsActive" type="checkbox" class="rounded border" />
+      <span>Kích hoạt</span>
+    </div>
+  </div>
+</div>

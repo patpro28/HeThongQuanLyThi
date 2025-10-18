@@ -3,6 +3,7 @@ using System;
 using HeThongQuanLyThi.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,154 +11,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HeThongQuanLyThi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251018091058_AddProblemAndChoices")]
+    partial class AddProblemAndChoices
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.10");
-
-            modelBuilder.Entity("HeThongQuanLyThi.Models.Contest", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("AuthorProfileId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(1000)
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime?>("EndAt")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("IsPublished")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("MaxAttemptsPerStudent")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("ShuffleChoices")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("ShuffleQuestions")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("StartAt")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("SubjectId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("TimeLimitMinutes")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AuthorProfileId");
-
-                    b.HasIndex("SubjectId", "IsPublished", "StartAt");
-
-                    b.ToTable("Contests");
-                });
-
-            modelBuilder.Entity("HeThongQuanLyThi.Models.ContestAnswer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("AttemptId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ProblemId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("SelectedChoiceId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProblemId");
-
-                    b.HasIndex("SelectedChoiceId");
-
-                    b.HasIndex("AttemptId", "ProblemId")
-                        .IsUnique();
-
-                    b.ToTable("ContestAnswers");
-                });
-
-            modelBuilder.Entity("HeThongQuanLyThi.Models.ContestAttempt", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ContestId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<decimal>("Score")
-                        .HasColumnType("decimal(9,2)");
-
-                    b.Property<DateTime>("StartedAt")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("StudentProfileId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime?>("SubmittedAt")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("StudentProfileId");
-
-                    b.HasIndex("ContestId", "StudentProfileId");
-
-                    b.ToTable("ContestAttempts");
-                });
-
-            modelBuilder.Entity("HeThongQuanLyThi.Models.ContestProblem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ContestId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Order")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<decimal?>("PointsOverride")
-                        .HasColumnType("decimal(9,2)");
-
-                    b.Property<int>("ProblemId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProblemId");
-
-                    b.HasIndex("ContestId", "Order")
-                        .IsUnique();
-
-                    b.HasIndex("ContestId", "ProblemId")
-                        .IsUnique();
-
-                    b.ToTable("ContestProblems");
-                });
 
             modelBuilder.Entity("HeThongQuanLyThi.Models.Problem", b =>
                 {
@@ -593,88 +454,6 @@ namespace HeThongQuanLyThi.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("HeThongQuanLyThi.Models.Contest", b =>
-                {
-                    b.HasOne("HeThongQuanLyThi.Models.Profile", "AuthorProfile")
-                        .WithMany()
-                        .HasForeignKey("AuthorProfileId")
-                        .OnDelete(DeleteBehavior.SetNull);
-
-                    b.HasOne("HeThongQuanLyThi.Models.Subject", "Subject")
-                        .WithMany()
-                        .HasForeignKey("SubjectId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("AuthorProfile");
-
-                    b.Navigation("Subject");
-                });
-
-            modelBuilder.Entity("HeThongQuanLyThi.Models.ContestAnswer", b =>
-                {
-                    b.HasOne("HeThongQuanLyThi.Models.ContestAttempt", "Attempt")
-                        .WithMany("Answers")
-                        .HasForeignKey("AttemptId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("HeThongQuanLyThi.Models.Problem", "Problem")
-                        .WithMany()
-                        .HasForeignKey("ProblemId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("HeThongQuanLyThi.Models.ProblemChoice", "SelectedChoice")
-                        .WithMany()
-                        .HasForeignKey("SelectedChoiceId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.Navigation("Attempt");
-
-                    b.Navigation("Problem");
-
-                    b.Navigation("SelectedChoice");
-                });
-
-            modelBuilder.Entity("HeThongQuanLyThi.Models.ContestAttempt", b =>
-                {
-                    b.HasOne("HeThongQuanLyThi.Models.Contest", "Contest")
-                        .WithMany("Attempts")
-                        .HasForeignKey("ContestId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("HeThongQuanLyThi.Models.Profile", "StudentProfile")
-                        .WithMany()
-                        .HasForeignKey("StudentProfileId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Contest");
-
-                    b.Navigation("StudentProfile");
-                });
-
-            modelBuilder.Entity("HeThongQuanLyThi.Models.ContestProblem", b =>
-                {
-                    b.HasOne("HeThongQuanLyThi.Models.Contest", "Contest")
-                        .WithMany("Problems")
-                        .HasForeignKey("ContestId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("HeThongQuanLyThi.Models.Problem", "Problem")
-                        .WithMany()
-                        .HasForeignKey("ProblemId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Contest");
-
-                    b.Navigation("Problem");
-                });
-
             modelBuilder.Entity("HeThongQuanLyThi.Models.Problem", b =>
                 {
                     b.HasOne("HeThongQuanLyThi.Models.Profile", "AuthorProfile")
@@ -793,18 +572,6 @@ namespace HeThongQuanLyThi.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("HeThongQuanLyThi.Models.Contest", b =>
-                {
-                    b.Navigation("Attempts");
-
-                    b.Navigation("Problems");
-                });
-
-            modelBuilder.Entity("HeThongQuanLyThi.Models.ContestAttempt", b =>
-                {
-                    b.Navigation("Answers");
                 });
 
             modelBuilder.Entity("HeThongQuanLyThi.Models.Problem", b =>

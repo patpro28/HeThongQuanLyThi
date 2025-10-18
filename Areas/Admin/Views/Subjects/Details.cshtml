@@ -1,0 +1,22 @@
+@model HeThongQuanLyThi.Models.Subject
+@{
+    ViewData["Title"] = "Chi tiết môn học";
+}
+<h1 class="text-2xl font-semibold mb-4">Chi tiết môn học</h1>
+
+<div class="bg-white rounded border p-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div><span class="text-gray-500">Mã:</span> @Model.Code</div>
+        <div><span class="text-gray-500">Tên:</span> @Model.Name</div>
+        <div><span class="text-gray-500">Khối:</span> @Model.GradeLevel</div>
+        <div><span class="text-gray-500">Tín chỉ:</span> @Model.Credits</div>
+        <div class="md:col-span-2"><span class="text-gray-500">Mô tả:</span> @Model.Description</div>
+        <div><span class="text-gray-500">Trạng thái:</span> @(Model.IsActive ? "Đang dùng" : "Ngưng")</div>
+        <div><span class="text-gray-500">Tạo lúc:</span> @Model.CreatedAt.ToLocalTime()</div>
+    </div>
+</div>
+
+<div class="mt-4 flex gap-2">
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="rounded border px-4 py-2 hover:bg-gray-50">Sửa</a>
+    <a asp-action="Index" class="rounded border px-4 py-2 hover:bg-gray-50">Quay lại</a>
+</div>
